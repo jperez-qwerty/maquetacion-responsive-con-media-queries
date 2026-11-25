@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Escala correcta en móvil y zoom bloqueado -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- SEO -->
+  <title>MurciaGram | Inspiración visual de la Región de Murcia</title>
+  <meta name="description" content="Descubre el patrimonio histórico, natural y gastronómico de los municipios de la Región de Murcia en una galería de inspiración visual.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph básico -->
+  <meta property="og:title" content="MurciaGram | La Región de Murcia en imágenes">
+  <meta property="og:description" content="Galería visual de los municipios de la Región de Murcia.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/lorca-desktop.jpg">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <header class="site-header">
+    <h1>MurciaGram</h1>
+    <p>El Pinterest de la Región de Murcia</p>
+  </header>
+
+  <!-- MENÚ LATERAL (en escritorio) -->
+  <aside class="site-aside">
+    <nav aria-label="Categorías">
+      <ul>
+        <li><a href="#">Patrimonio</a></li>
+        <li><a href="#">Naturaleza</a></li>
+        <li><a href="#">Gastronomía</a></li>
+        <li><a href="#">Favoritos</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- GALERÍA PRINCIPAL -->
+  <main class="gallery">
+
+    <!-- ===== TARJETA 1: LORCA ===== -->
+    <article class="card" data-id="lorca">
+      <figure class="card-media">
+        <picture>
+          <!-- Móvil: imagen pequeña -->
+          <source media="(width <= 600px)" srcset="assets/img/lorca-mobile.jpg">
+          <!-- Resto: imagen grande -->
+          <img src="assets/img/lorca-desktop.jpg" alt="Castillo de Lorca" loading="lazy">
+        </picture>
+
+        <!-- Overlay: se muestra al hacer hover o foco -->
+        <figcaption class="overlay">
+          <p>Ciudad barroca con un castillo-fortaleza medieval.</p>
+          <div class="overlay-actions">
+            <button class="like-btn" type="button" aria-label="Me gusta">♡</button>
+            <a class="web-link" href="https://www.lorca.es" target="_blank" rel="noopener" aria-label="Web oficial de Lorca">↗</a>
+          </div>
+        </figcaption>
+      </figure>
+
+      <div class="card-body">
+        <h2>Lorca</h2>
+        <p>Historia y barroco.</p>
+
+        <!-- Efecto permanente: checkbox + label (sin JS) -->
+        <input type="checkbox" id="guardar-lorca" class="save-check">
+        <label for="guardar-lorca" class="btn">Guardar</label>
+      </div>
+    </article>
+
+    <!-- ===== TARJETA 2: CARTAGENA ===== -->
+    <article class="card" data-id="cartagena">
+      <figure class="card-media">
+        <picture>
+          <source media="(width <= 600px)" srcset="assets/img/cartagena-mobile.jpg">
+          <img src="assets/img/cartagena-desktop.jpg" alt="Teatro Romano de Cartagena" loading="lazy">
+        </picture>
+        <figcaption class="overlay">
+          <p>Puerto milenario con un gran legado romano.</p>
+          <div class="overlay-actions">
+            <button class="like-btn" type="button" aria-label="Me gusta">♡</button>
+            <a class="web-link" href="https://www.cartagena.es" target="_blank" rel="noopener" aria-label="Web oficial de Cartagena">↗</a>
+          </div>
+        </figcaption>
+      </figure>
+
+      <div class="card-body">
+        <h2>Cartagena</h2>
+        <p>Puerto y romanos.</p>
+        <input type="checkbox" id="guardar-cartagena" class="save-check">
+        <label for="guardar-cartagena" class="btn">Guardar</label>
+      </div>
+    </article>
+
+    <!-- ===== TARJETA 3: MAZARRÓN ===== -->
+    <article class="card" data-id="mazarron">
+      <figure class="card-media">
+        <picture>
+          <source media="(width <= 600px)" srcset="assets/img/mazarron-mobile.jpg">
+          <img src="assets/img/mazarron-desktop.jpg" alt="Bahía de Mazarrón" loading="lazy">
+        </picture>
+        <figcaption class="overlay">
+          <p>Calas de aguas cristalinas y paisajes volcánicos.</p>
+          <div class="overlay-actions">
+            <button class="like-btn" type="button" aria-label="Me gusta">♡</button>
+            <a class="web-link" href="https://www.mazarron.es" target="_blank" rel="noopener" aria-label="Web oficial de Mazarrón">↗</a>
+          </div>
+        </figcaption>
+      </figure>
+
+      <div class="card-body">
+        <h2>Mazarrón</h2>
+        <p>Playas y naturaleza.</p>
+        <input type="checkbox" id="guardar-mazarron" class="save-check">
+        <label for="guardar-mazarron" class="btn">Guardar</label>
+      </div>
+    </article>
+
+    <!-- ===== TARJETA 4: MURCIA ===== -->
+    <article class="card" data-id="murcia">
+      <figure class="card-media">
+        <picture>
+          <source media="(width <= 600px)" srcset="assets/img/murcia-mobile.jpg">
+          <img src="assets/img/murcia-desktop.jpg" alt="Catedral de Murcia" loading="lazy">
+        </picture>
+        <figcaption class="overlay">
+          <p>Capital de la región, famosa por su catedral y su huerta.</p>
+          <div class="overlay-actions">
+            <button class="like-btn" type="button" aria-label="Me gusta">♡</button>
+            <a class="web-link" href="https://www.murcia.es" target="_blank" rel="noopener" aria-label="Web oficial de Murcia">↗</a>
+          </div>
+        </figcaption>
+      </figure>
+
+      <div class="card-body">
+        <h2>Murcia</h2>
+        <p>Catedral y huerta.</p>
+        <input type="checkbox" id="guardar-murcia" class="save-check">
+        <label for="guardar-murcia" class="btn">Guardar</label>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <p>© 2026 MurciaGram · Consejería de Turismo de la Región de Murcia</p>
+  </footer>
+
+</body>
+</html>

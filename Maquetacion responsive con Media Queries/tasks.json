@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Optimizar imágenes (ImageMagick)",
+      "type": "shell",
+      "command": "mkdir -p assets/img && for f in assets/raw/*.jpg; do n=$(basename \"$f\" .jpg); magick \"$f\" -resize 400x \"assets/img/$n-mobile.jpg\"; magick \"$f\" -resize 1000x \"assets/img/$n-desktop.jpg\"; done",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

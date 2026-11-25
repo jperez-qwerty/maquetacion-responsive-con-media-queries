@@ -1,0 +1,280 @@
+/* =========================================================
+   MurciaGram - CSS Mobile-First
+   Orden: 1) Base (móvil)  2) Tableta  3) Escritorio  4) Impresión
+   ========================================================= */
+
+/* ---------- Variables y reset ---------- */
+:root {
+  --color-fondo: #f5f5f5;
+  --color-texto: #222;
+  --color-principal: #c0392b;
+  --color-tarjeta: #fff;
+  --curva: cubic-bezier(0.34, 1.56, 0.64, 1); /* curva Bézier personalizada */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+/* ---------- 1) BASE: MÓVIL (< 600px) ---------- */
+
+.site-header {
+  background: var(--color-principal);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.site-aside {
+  background: white;
+  padding: 1rem;
+}
+
+.site-aside ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.site-aside a {
+  display: block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+/* Galería: UNA columna con Flexbox */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.site-footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ---------- Tarjeta ---------- */
+
+.card {
+  background: var(--color-tarjeta);
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.4s var(--curva), box-shadow 0.4s var(--curva);
+}
+
+/* Hover y foco de teclado */
+.card:hover,
+.card:focus-within {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.card-media {
+  position: relative; /* para colocar el overlay encima */
+}
+
+.card-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-body h2 {
+  margin-bottom: 0.3rem;
+}
+
+.card-body p {
+  margin-bottom: 0.8rem;
+}
+
+/* ---------- Overlay estilo Pinterest ---------- */
+
+.overlay {
+  position: absolute;
+  inset: 0; /* ocupa toda la imagen */
+  background: rgba(0, 0, 0, 0.55); /* oscurece la imagen */
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0; /* oculto al principio */
+  transition: opacity 0.3s ease;
+}
+
+.card-media:hover .overlay,
+.card:focus-within .overlay {
+  opacity: 1;
+}
+
+.overlay-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.like-btn,
+.web-link {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: var(--color-principal);
+  font-size: 1.3rem;
+  text-align: center;
+  line-height: 40px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ---------- Botón "Guardar" (efecto permanente) ---------- */
+
+/* Ocultamos el checkbox, pero sigue funcionando */
+.save-check {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: var(--color-principal);
+  color: white;
+  cursor: pointer;
+}
+
+/* Foco visible cuando se navega con teclado */
+.save-check:focus-visible + .btn {
+  outline: 3px solid #222;
+}
+
+/* Cuando el checkbox está marcado, la tarjeta cambia drásticamente */
+.card:has(.save-check:checked) {
+  border: 3px solid var(--color-principal);
+  background: #ffeaea;
+}
+
+.card:has(.save-check:checked) .btn {
+  background: #27ae60;
+}
+
+/* ---------- Preparado para el JavaScript futuro ---------- */
+
+/* JS añadirá la clase "is-liked" a la tarjeta */
+.card.is-liked {
+  order: -1; /* la tarjeta pasa al primer lugar */
+}
+
+/* JS añadirá "is-active" al botón de me gusta (corazón relleno) */
+.like-btn.is-active {
+  background: var(--color-principal);
+  color: white;
+}
+
+/* ---------- 2) TABLETA: 600px - 800px ---------- */
+@media (width >= 600px) and (width <= 800px) {
+
+  /* Grid sencillo de 2 columnas */
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- 3) ESCRITORIO: > 800px ---------- */
+@media (width > 800px) {
+
+  /* Grid general de la página */
+  body {
+    display: grid;
+    grid-template-columns: 240px 1fr; /* aside de tamaño fijo */
+    grid-template-areas:
+      "header header"
+      "aside  main"
+      "footer footer";
+    min-height: 100vh;
+  }
+
+  .site-header { grid-area: header; }
+  .site-aside  { grid-area: aside; }
+  .gallery     { grid-area: main; }
+  .site-footer { grid-area: footer; }
+
+  .site-aside ul {
+    flex-direction: column;
+  }
+
+  /* Galería fluida con Flexbox */
+  .gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+
+  .card {
+    flex: 1 1 280px; /* crecen y se adaptan al ancho disponible */
+    max-width: 360px;
+  }
+}
+
+/* ---------- 4) IMPRESIÓN ---------- */
+@media print {
+
+  body {
+    display: block;
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+
+  /* Ocultamos lo que no sirve en papel */
+  .site-aside,
+  .btn,
+  .save-check,
+  .like-btn,
+  .web-link,
+  .overlay {
+    display: none;
+  }
+
+  .site-header,
+  .site-footer {
+    background: white;
+    color: black;
+  }
+
+  .gallery {
+    display: block;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #999;
+    margin-bottom: 1rem;
+    break-inside: avoid; /* no partir tarjetas entre páginas */
+  }
+}
